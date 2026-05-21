@@ -46,9 +46,7 @@ ALL REQUESTED FEATURES ADDED
                 margin-right: auto;
             }
 
-            nav .hidden {
-                display: none !important;
-            }
+
 
         }
 
@@ -102,10 +100,6 @@ ALL REQUESTED FEATURES ADDED
 
             #productsGrid {
                 grid-template-columns: 1fr;
-            }
-
-            .flex {
-                flex-wrap: wrap;
             }
 
             input {
@@ -389,6 +383,105 @@ ALL REQUESTED FEATURES ADDED
             }
 
         }
+
+        /* ================= MOBILE MENU ================= */
+
+        #mobileMenu {
+            animation: mobileMenu .3s ease;
+        }
+
+        @keyframes mobileMenu {
+
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* ================= SEARCH FIX ================= */
+
+        .search-wrap {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            background: rgba(0, 0, 0, .2);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 20px;
+            padding: 18px 24px;
+            outline: none;
+            width: 100%;
+        }
+
+        .search-btn {
+            background: #06b6d4;
+            padding: 18px 30px;
+            border-radius: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* ================= MOBILE FIXES ================= */
+
+        @media(max-width:768px) {
+
+            .search-wrap {
+                flex-direction: column;
+            }
+
+            .search-btn {
+                width: 100%;
+            }
+
+            #productsPage {
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+            }
+
+            #productsGrid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 14px !important;
+            }
+
+            #productsGrid img {
+                height: 160px !important;
+            }
+
+            #productsGrid h3 {
+                font-size: 14px !important;
+            }
+
+            #productsGrid .text-3xl {
+                font-size: 16px !important;
+            }
+
+            #productsGrid p {
+                font-size: 12px !important;
+            }
+
+            #productsGrid .p-8 {
+                padding: 14px !important;
+            }
+
+            #productsGrid button {
+                padding: 8px 12px !important;
+                font-size: 12px !important;
+            }
+
+            .hero-bg {
+                padding-top: 120px !important;
+            }
+
+        }
     </style>
 
 </head>
@@ -397,13 +490,19 @@ ALL REQUESTED FEATURES ADDED
 
     <!-- ================= NAVBAR ================= -->
 
-    <nav class="fixed top-0 w-full z-50 glass">
+    <!-- ================= NAVBAR ================= -->
 
-        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between nav-mobile">
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
 
-            <div class="text-4xl font-black gradient-text">
-                NovaCart
-            </div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+
+            <!-- LEFT : MENU BUTTON -->
+
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-3xl text-white">
+                ☰
+            </button>
+
+            <!-- DESKTOP MENU -->
 
             <div class="hidden lg:flex gap-10 text-gray-300">
 
@@ -425,14 +524,48 @@ ALL REQUESTED FEATURES ADDED
 
             </div>
 
-            <div class="flex gap-2 md:gap-4">
+            <!-- CENTER LOGO -->
 
-                <button onclick="openLogin()" class="glass px-5 py-3 rounded-full">
-                    Login
+            <div class="absolute left-1/2 -translate-x-1/2">
+
+                <img src="./BBBB (1).jpg"
+                    class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-cyan-400 shadow-lg shadow-cyan-500/30" />
+
+            </div>
+
+            <!-- RIGHT CART -->
+
+            <button onclick="openCart()"
+                class="bg-indigo-600 px-4 md:px-5 py-2 md:py-3 rounded-full glow text-sm md:text-base">
+                Cart (<span id="cartCount">0</span>)
+            </button>
+
+        </div>
+
+        <!-- MOBILE MENU -->
+
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 px-6 py-6 bg-black/70 backdrop-blur-xl">
+
+            <div class="flex flex-col gap-5 text-lg">
+
+                <button onclick="showPage('homePage'); closeMobileMenu()">
+                    Home
                 </button>
 
-                <button onclick="openCart()" class="bg-indigo-600 px-5 py-3 rounded-full glow">
-                    Cart (<span id="cartCount">0</span>)
+                <button onclick="showPage('productsPage'); closeMobileMenu()">
+                    Products
+                </button>
+
+                <button onclick="showPage('dealsPage'); closeMobileMenu()">
+                    Deals
+                </button>
+
+                <button onclick="showPage('vendorsPage'); closeMobileMenu()">
+                    Vendors
+                </button>
+
+                <button onclick="openLogin(); closeMobileMenu()" class="bg-indigo-600 py-3 rounded-2xl mt-3">
+                    Sign In
                 </button>
 
             </div>
@@ -644,12 +777,9 @@ class="w-full h-full object-cover hover:scale-110 duration-500"/>
 
             <div class="glass rounded-[35px] p-8 mb-16">
 
-                <div class="flex flex-col lg:flex-row gap-5">
-
-                    <input id="searchInput" type="text" placeholder="Search products..."
-                        class="flex-1 bg-black/20 border border-white/10 rounded-2xl px-8 py-5 outline-none text-lg" />
-
-                    <button onclick="searchProducts()" class="bg-cyan-500 px-10 py-5 rounded-2xl font-bold glow">
+                <div class="search-wrap">
+                    <input id="searchInput" type="text" placeholder="Search products..." class="search-input" />
+                    <button onclick="searchProducts()" class="search-btn">
                         Search
                     </button>
 
@@ -783,6 +913,9 @@ class="w-full h-full object-cover hover:scale-110 duration-500"/>
                 <div class="eye-btn" onclick="togglePassword()">
                     👁️
                 </div>
+
+
+
 
             </div>
 
@@ -1215,6 +1348,21 @@ ${item.quantity}
             } else {
                 input.type = "password";
             }
+
+        }
+        function toggleMobileMenu() {
+
+            document
+                .getElementById("mobileMenu")
+                .classList.toggle("hidden");
+
+        }
+
+        function closeMobileMenu() {
+
+            document
+                .getElementById("mobileMenu")
+                .classList.add("hidden");
 
         }
 
