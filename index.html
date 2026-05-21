@@ -403,6 +403,38 @@ ALL REQUESTED FEATURES ADDED
             }
 
         }
+        #mobileMenu{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(5,10,25,.97);
+    backdrop-filter: blur(25px);
+    z-index: 99999;
+    transition: .45s ease;
+    padding-top: 100px;
+    border-right:1px solid rgba(255,255,255,.08);
+}
+
+#mobileMenu.active{
+    left:0;
+}
+
+.mobile-link{
+    text-align:left;
+    padding:14px 18px;
+    border-radius:16px;
+    transition:.3s;
+    color:#d1d5db;
+    font-weight:600;
+}
+
+.mobile-link:hover{
+    background:rgba(99,102,241,.18);
+    color:#22d3ee;
+    transform:translateX(6px);
+}
 
         /* ================= SEARCH FIX ================= */
 
@@ -561,10 +593,19 @@ ALL REQUESTED FEATURES ADDED
 
             <!-- RIGHT CART -->
 
-            <button onclick="openCart()"
-                class="bg-indigo-600 px-4 md:px-5 py-2 md:py-3 rounded-full glow text-sm md:text-base">
-                Cart (<span id="cartCount">0</span>)
-            </button>
+     <div class="flex items-center gap-3">
+
+<button onclick="openLogin()"
+class="hidden lg:block glass px-5 py-3 rounded-full hover:border-cyan-400 transition">
+    Sign In
+</button>
+
+<button onclick="openCart()"
+class="bg-indigo-600 px-4 md:px-5 py-2 md:py-3 rounded-full glow text-sm md:text-base">
+    Cart (<span id="cartCount">0</span>)
+</button>
+
+</div>
 
         </div>
 
@@ -574,25 +615,25 @@ ALL REQUESTED FEATURES ADDED
 
             <div class="flex flex-col gap-5 text-lg">
 
-                <button onclick="showPage('homePage'); closeMobileMenu()">
+                <button onclick="showPage('homePage'); closeMobileMenu()"  class="mobile-link">
                     Home
                 </button>
 
-                <button onclick="showPage('productsPage'); closeMobileMenu()">
+                <button onclick="showPage('productsPage'); closeMobileMenu()" class="mobile-link">
                     Products
                 </button>
 
-                <button onclick="showPage('dealsPage'); closeMobileMenu()">
+                <button onclick="showPage('dealsPage'); closeMobileMenu()" class="mobile-link">
                     Deals
                 </button>
 
-                <button onclick="showPage('vendorsPage'); closeMobileMenu()">
+                <button onclick="showPage('vendorsPage'); closeMobileMenu()" class="mobile-link">
                     Vendors
                 </button>
-
-                <button onclick="openLogin(); closeMobileMenu()" class="bg-indigo-600 py-3 rounded-2xl mt-3">
-                    Sign In
-                </button>
+<button onclick="openLogin(); closeMobileMenu()"
+class="mobile-link">
+    Sign In
+</button>
                 <button onclick="showPage('contactPage'); closeMobileMenu()">
                     Contact
                 </button>
@@ -1149,7 +1190,29 @@ class="w-full h-full object-cover hover:scale-110 duration-500"/>
             </div>
 
             <div id="cartItems"></div>
+<div id="checkoutForm" class="space-y-4 mb-8 hidden">
 
+<input type="text" placeholder="Full Name"
+class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+
+<input type="text" placeholder="Phone Number"
+class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+
+<input type="text" placeholder="Full Address"
+class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+
+<input type="text" placeholder="Nearest Landmark"
+class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+
+<input type="text" placeholder="Area / City"
+class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+
+<textarea
+placeholder="Anything important for rider?"
+rows="4"
+class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none resize-none"></textarea>
+
+</div>
             <div class="flex justify-between items-center mt-10">
                 <h2 class="text-xl md:text-3xl font-black">
                     Total: Rs <span id="cartTotal">0</span>
@@ -1424,11 +1487,11 @@ Add
 
 <div>
 
-<h3 class="text-lg md:text-xl font-bold leading-tight">
+<h3 class="text-sm md:text-lg font-semibold leading-tight max-w-[180px]">
 ${item.name}
 </h3>
 
-<p class="text-gray-400">
+<p class="text-gray-400 text-sm mt-1">
 Rs ${item.price.toLocaleString()}
 </p>
 
@@ -1438,7 +1501,7 @@ Rs ${item.price.toLocaleString()}
 
 <div class="flex items-center gap-4">
 
-<button onclick="decreaseQty(${item.id})" class="bg-red-500/80 hover:bg-red-500 w-9 h-9 rounded-full text-lg">
+<button onclick="decreaseQty(${item.id})" class="bg-red-500/80 hover:bg-red-500 w-8 h-8 rounded-full text-sm">
 -
 </button>
 
@@ -1446,7 +1509,7 @@ Rs ${item.price.toLocaleString()}
 ${item.quantity}
 </div>
 
-<button onclick="increaseQty(${item.id})" class="bg-green-500/80 hover:bg-green-500 w-9 h-9 rounded-full text-lg">
+<button onclick="increaseQty(${item.id})" class="bg-green-500/80 hover:bg-green-500 w-8 h-8 rounded-full text-sm">
 +
 </button>
 
@@ -1491,17 +1554,42 @@ ${item.quantity}
 
         }
 
-        function checkout() {
+      function checkout() {
 
-            alert("✅ Order Confirmed Successfully!");
+    const form =
+        document.getElementById("checkoutForm");
 
-            cart.length = 0;
+    if(form.classList.contains("hidden")){
 
-            updateCart();
+        form.classList.remove("hidden");
 
-            closeCart();
+        return;
 
-        }
+    }
+
+    document
+        .getElementById("orderLoader")
+        .classList.remove("hidden");
+
+    setTimeout(() => {
+
+        document
+            .getElementById("orderLoader")
+            .classList.add("hidden");
+
+        document
+            .getElementById("orderSuccess")
+            .classList.remove("hidden");
+
+        cart.length = 0;
+
+        updateCart();
+
+        closeCart();
+
+    }, 5000);
+
+}
 
         function openCart() {
 
@@ -1553,23 +1641,72 @@ ${item.quantity}
             }
 
         }
-        function toggleMobileMenu() {
+    function toggleMobileMenu() {
 
-            document
-                .getElementById("mobileMenu")
-                .classList.toggle("hidden");
+    document
+        .getElementById("mobileMenu")
+        .classList.toggle("active");
 
-        }
+}
 
-        function closeMobileMenu() {
+function closeMobileMenu() {
 
-            document
-                .getElementById("mobileMenu")
-                .classList.add("hidden");
+    document
+        .getElementById("mobileMenu")
+        .classList.remove("active");
 
-        }
+}
+function closeSuccess(){
+
+    document
+        .getElementById("orderSuccess")
+        .classList.add("hidden");
+
+}
 
     </script>
+<div id="orderLoader"
+class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[999999]">
+
+<div class="text-center">
+
+<img src="./BBBB (1).jpg"
+class="w-28 h-28 rounded-full object-cover mx-auto animate-spin border-4 border-cyan-400"/>
+
+<p class="mt-6 text-2xl font-bold">
+Processing Order...
+</p>
+
+</div>
+
+</div>
+
+<div id="orderSuccess"
+class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[999999]">
+
+<div class="glass p-14 rounded-[40px] text-center max-w-lg mx-6">
+
+<div class="text-7xl mb-6">
+✅
+</div>
+
+<h2 class="text-5xl font-black gradient-text">
+Order Successful
+</h2>
+
+<p class="text-gray-400 mt-6 text-lg leading-relaxed">
+Your order has been placed successfully.
+NovaCart rider will contact you soon.
+</p>
+
+<button onclick="closeSuccess()"
+class="mt-10 bg-indigo-600 px-10 py-4 rounded-2xl glow font-bold">
+Continue Shopping
+</button>
+
+</div>
+
+</div>
 
 </body>
 
