@@ -403,38 +403,39 @@ ALL REQUESTED FEATURES ADDED
             }
 
         }
-        #mobileMenu{
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 280px;
-    height: 100vh;
-    background: rgba(5,10,25,.97);
-    backdrop-filter: blur(25px);
-    z-index: 99999;
-    transition: .45s ease;
-    padding-top: 100px;
-    border-right:1px solid rgba(255,255,255,.08);
-}
 
-#mobileMenu.active{
-    left:0;
-}
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(5, 10, 25, .97);
+            backdrop-filter: blur(25px);
+            z-index: 99999;
+            transition: .45s ease;
+            padding-top: 100px;
+            border-right: 1px solid rgba(255, 255, 255, .08);
+        }
 
-.mobile-link{
-    text-align:left;
-    padding:14px 18px;
-    border-radius:16px;
-    transition:.3s;
-    color:#d1d5db;
-    font-weight:600;
-}
+        #mobileMenu.active {
+            left: 0;
+        }
 
-.mobile-link:hover{
-    background:rgba(99,102,241,.18);
-    color:#22d3ee;
-    transform:translateX(6px);
-}
+        .mobile-link {
+            text-align: left;
+            padding: 14px 18px;
+            border-radius: 16px;
+            transition: .3s;
+            color: #d1d5db;
+            font-weight: 600;
+        }
+
+        .mobile-link:hover {
+            background: rgba(99, 102, 241, .18);
+            color: #22d3ee;
+            transform: translateX(6px);
+        }
 
         /* ================= SEARCH FIX ================= */
 
@@ -593,44 +594,43 @@ ALL REQUESTED FEATURES ADDED
 
             <!-- RIGHT CART -->
 
-     <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3">
 
-<button onclick="openLogin()"
-class="hidden lg:block glass px-5 py-3 rounded-full hover:border-cyan-400 transition">
-    Sign In
-</button>
+                <button onclick="openLogin()"
+                    class="hidden lg:block glass px-5 py-3 rounded-full hover:border-cyan-400 transition">
+                    Sign In
+                </button>
 
-<button onclick="openCart()"
-class="bg-indigo-600 px-4 md:px-5 py-2 md:py-3 rounded-full glow text-sm md:text-base">
-    Cart (<span id="cartCount">0</span>)
-</button>
+                <button onclick="openCart()"
+                    class="bg-indigo-600 px-4 md:px-5 py-2 md:py-3 rounded-full glow text-sm md:text-base">
+                    Cart (<span id="cartCount">0</span>)
+                </button>
 
-</div>
+            </div>
 
         </div>
 
         <!-- MOBILE MENU -->
 
-<div id="mobileMenu"
-class="fixed top-0 left-[-100%] w-[78%] h-screen z-[99999]
+        <div id="mobileMenu" class="fixed top-0 left-[-100%] w-[78%] h-screen z-[99999]
 bg-[#081120]/95 backdrop-blur-2xl
 border-r border-white/10
 px-7 py-10
 duration-500 lg:hidden">
-<div class="flex justify-between items-center mb-10">
+            <div class="flex justify-between items-center mb-10">
 
-<h2 class="text-3xl font-black gradient-text">
-NovaCart
-</h2>
+                <h2 class="text-3xl font-black gradient-text">
+                    NovaCart
+                </h2>
 
-<button onclick="closeMobileMenu()" class="text-4xl">
-×
-</button>
+                <button onclick="closeMobileMenu()" class="text-4xl">
+                    ×
+                </button>
 
-</div>
+            </div>
             <div class="flex flex-col gap-5 text-lg">
 
-                <button onclick="showPage('homePage'); closeMobileMenu()"  class="mobile-link">
+                <button onclick="showPage('homePage'); closeMobileMenu()" class="mobile-link">
                     Home
                 </button>
 
@@ -645,10 +645,9 @@ NovaCart
                 <button onclick="showPage('vendorsPage'); closeMobileMenu()" class="mobile-link">
                     Vendors
                 </button>
-<button onclick="openLogin(); closeMobileMenu()"
-class="mobile-link">
-    Sign In
-</button>
+                <button onclick="openLogin(); closeMobileMenu()" class="mobile-link">
+                    Sign In
+                </button>
                 <button onclick="showPage('contactPage'); closeMobileMenu()">
                     Contact
                 </button>
@@ -974,91 +973,84 @@ class="w-full h-full object-cover hover:scale-110 duration-500"/>
     </div>
     <!-- ================= CONTACT PAGE ================= -->
 
-<div id="contactPage" class="page pt-40 px-6">
+    <div id="contactPage" class="page pt-40 px-6">
 
-    <div class="max-w-6xl mx-auto">
+        <div class="max-w-6xl mx-auto">
 
-        <h2 class="text-5xl md:text-6xl font-black mb-16">
-            Contact Us
-        </h2>
+            <h2 class="text-5xl md:text-6xl font-black mb-16">
+                Contact Us
+            </h2>
 
-        <div class="glass rounded-[35px] p-10">
+            <div class="glass rounded-[35px] p-10">
 
-            <div class="grid md:grid-cols-2 gap-10">
+                <div class="grid md:grid-cols-2 gap-10">
 
-                <div class="space-y-8">
+                    <div class="space-y-8">
 
-                    <div class="flex items-center gap-5">
-                        <div class="text-5xl">📧</div>
-                        <div>
-                            <h3 class="text-2xl font-bold">Email</h3>
-                            <p class="text-gray-400 mt-2">
-                                support@novacart.com
-                            </p>
+                        <div class="flex items-center gap-5">
+                            <div class="text-5xl">📧</div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Email</h3>
+                                <p class="text-gray-400 mt-2">
+                                    support@novacart.com
+                                </p>
+                            </div>
                         </div>
+
+                        <div class="flex items-center gap-5">
+                            <div class="text-5xl">📱</div>
+                            <div>
+                                <h3 class="text-2xl font-bold">WhatsApp</h3>
+                                <p class="text-gray-400 mt-2">
+                                    +92 300 1234567
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-5">
+                            <div class="text-5xl">📘</div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Facebook</h3>
+                                <p class="text-gray-400 mt-2">
+                                    facebook.com/novacart
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-5">
+                            <div class="text-5xl">📸</div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Instagram</h3>
+                                <p class="text-gray-400 mt-2">
+                                    instagram.com/novacart
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="flex items-center gap-5">
-                        <div class="text-5xl">📱</div>
-                        <div>
-                            <h3 class="text-2xl font-bold">WhatsApp</h3>
-                            <p class="text-gray-400 mt-2">
-                                +92 300 1234567
-                            </p>
-                        </div>
-                    </div>
+                    <div class="glass rounded-[30px] p-8">
 
-                    <div class="flex items-center gap-5">
-                        <div class="text-5xl">📘</div>
-                        <div>
-                            <h3 class="text-2xl font-bold">Facebook</h3>
-                            <p class="text-gray-400 mt-2">
-                                facebook.com/novacart
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-5">
-                        <div class="text-5xl">📸</div>
-                        <div>
-                            <h3 class="text-2xl font-bold">Instagram</h3>
-                            <p class="text-gray-400 mt-2">
-                                instagram.com/novacart
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="glass rounded-[30px] p-8">
-
-                    <h3 class="text-3xl font-black mb-8 gradient-text">
-                        Send Message
-                    </h3>
-
-                    <div class="space-y-5">
-
-                        <input
-                            type="text"
-                            placeholder="Your Name"
-                            class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none"
-                        />
-
-                        <input
-                            type="email"
-                            placeholder="Your Email"
-                            class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none"
-                        />
-
-                        <textarea
-                            rows="5"
-                            placeholder="Your Message"
-                            class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none resize-none"
-                        ></textarea>
-
-                        <button class="w-full bg-indigo-600 py-4 rounded-2xl glow font-bold">
+                        <h3 class="text-3xl font-black mb-8 gradient-text">
                             Send Message
-                        </button>
+                        </h3>
+
+                        <div class="space-y-5">
+
+                            <input type="text" placeholder="Your Name"
+                                class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none" />
+
+                            <input type="email" placeholder="Your Email"
+                                class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none" />
+
+                            <textarea rows="5" placeholder="Your Message"
+                                class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none resize-none"></textarea>
+
+                            <button class="w-full bg-indigo-600 py-4 rounded-2xl glow font-bold">
+                                Send Message
+                            </button>
+
+                        </div>
 
                     </div>
 
@@ -1069,79 +1061,77 @@ class="w-full h-full object-cover hover:scale-110 duration-500"/>
         </div>
 
     </div>
+    <!-- ================= FAQ PAGE ================= -->
 
-</div>
-<!-- ================= FAQ PAGE ================= -->
+    <div id="faqPage" class="page pt-40 px-6">
 
-<div id="faqPage" class="page pt-40 px-6">
+        <div class="max-w-5xl mx-auto">
 
-    <div class="max-w-5xl mx-auto">
+            <h2 class="text-5xl md:text-6xl font-black mb-16">
+                FAQs
+            </h2>
 
-        <h2 class="text-5xl md:text-6xl font-black mb-16">
-            FAQs
-        </h2>
+            <div class="space-y-6">
 
-        <div class="space-y-6">
+                <details class="glass rounded-[30px] p-6 cursor-pointer">
+                    <summary class="text-xl font-bold">
+                        How long does delivery take?
+                    </summary>
+                    <p class="text-gray-400 mt-5">
+                        Delivery usually takes 2-5 working days.
+                    </p>
+                </details>
 
-            <details class="glass rounded-[30px] p-6 cursor-pointer">
-                <summary class="text-xl font-bold">
-                    How long does delivery take?
-                </summary>
-                <p class="text-gray-400 mt-5">
-                    Delivery usually takes 2-5 working days.
-                </p>
-            </details>
+                <details class="glass rounded-[30px] p-6 cursor-pointer">
+                    <summary class="text-xl font-bold">
+                        Is cash on delivery available?
+                    </summary>
+                    <p class="text-gray-400 mt-5">
+                        Yes, COD is available in selected cities.
+                    </p>
+                </details>
 
-            <details class="glass rounded-[30px] p-6 cursor-pointer">
-                <summary class="text-xl font-bold">
-                    Is cash on delivery available?
-                </summary>
-                <p class="text-gray-400 mt-5">
-                    Yes, COD is available in selected cities.
-                </p>
-            </details>
+                <details class="glass rounded-[30px] p-6 cursor-pointer">
+                    <summary class="text-xl font-bold">
+                        Are products original?
+                    </summary>
+                    <p class="text-gray-400 mt-5">
+                        All products are 100% authentic and verified.
+                    </p>
+                </details>
 
-            <details class="glass rounded-[30px] p-6 cursor-pointer">
-                <summary class="text-xl font-bold">
-                    Are products original?
-                </summary>
-                <p class="text-gray-400 mt-5">
-                    All products are 100% authentic and verified.
-                </p>
-            </details>
+                <details class="glass rounded-[30px] p-6 cursor-pointer">
+                    <summary class="text-xl font-bold">
+                        Can I return products?
+                    </summary>
+                    <p class="text-gray-400 mt-5">
+                        Returns are accepted within 7 days.
+                    </p>
+                </details>
 
-            <details class="glass rounded-[30px] p-6 cursor-pointer">
-                <summary class="text-xl font-bold">
-                    Can I return products?
-                </summary>
-                <p class="text-gray-400 mt-5">
-                    Returns are accepted within 7 days.
-                </p>
-            </details>
+                <details class="glass rounded-[30px] p-6 cursor-pointer">
+                    <summary class="text-xl font-bold">
+                        Is online payment secure?
+                    </summary>
+                    <p class="text-gray-400 mt-5">
+                        Yes, all transactions are encrypted and secure.
+                    </p>
+                </details>
 
-            <details class="glass rounded-[30px] p-6 cursor-pointer">
-                <summary class="text-xl font-bold">
-                    Is online payment secure?
-                </summary>
-                <p class="text-gray-400 mt-5">
-                    Yes, all transactions are encrypted and secure.
-                </p>
-            </details>
+                <details class="glass rounded-[30px] p-6 cursor-pointer">
+                    <summary class="text-xl font-bold">
+                        Do products include warranty?
+                    </summary>
+                    <p class="text-gray-400 mt-5">
+                        Warranty depends on the product category.
+                    </p>
+                </details>
 
-            <details class="glass rounded-[30px] p-6 cursor-pointer">
-                <summary class="text-xl font-bold">
-                    Do products include warranty?
-                </summary>
-                <p class="text-gray-400 mt-5">
-                    Warranty depends on the product category.
-                </p>
-            </details>
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
     <!-- ================= LOGIN MODAL ================= -->
 
@@ -1168,32 +1158,31 @@ class="w-full h-full object-cover hover:scale-110 duration-500"/>
 
                 <input id="passwordInput" type="password" placeholder="Password"
                     class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none" />
-                    
-                    <p class="text-sm text-gray-400 mt-3 leading-relaxed">
-                         <div class="eye-btn" onclick="togglePassword()">
+
+                <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                <div class="eye-btn" onclick="togglePassword()">
                     👁️
                 </div>
-Password must contain:
-<br>
-• Minimum 8 characters
-<br>
-• 1 uppercase letter
-<br>
-• 1 number
-<br>
-• 1 special character
-</p>
+                Password must contain:
+                <br>
+                • Minimum 8 characters
+                <br>
+                • 1 uppercase letter
+                <br>
+                • 1 number
+                <br>
+                • 1 special character
+                </p>
 
-               
+
 
 
 
 
             </div>
-<button onclick="validateLogin()"
-class="w-full bg-indigo-600 py-4 rounded-2xl font-bold glow">
-Login
-</button>
+            <button onclick="validateLogin()" class="w-full bg-indigo-600 py-4 rounded-2xl font-bold glow">
+                Login
+            </button>
         </div>
 
     </div>
@@ -1217,33 +1206,32 @@ Login
             </div>
 
             <div id="cartItems"></div>
-<div id="checkoutForm" class="space-y-4 mb-8 hidden">
+            <div id="checkoutForm" class="space-y-4 mb-8 hidden">
 
-<input type="text" placeholder="Full Name"
-class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+                <input type="text" placeholder="Full Name"
+                    class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none" />
 
-<input type="text" placeholder="Phone Number"
-class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+                <input type="text" placeholder="Phone Number"
+                    class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none" />
 
-<input type="text" placeholder="Full Address"
-class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+                <input type="text" placeholder="Full Address"
+                    class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none" />
 
-<input type="text" placeholder="Nearest Landmark"
-class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+                <input type="text" placeholder="Nearest Landmark"
+                    class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none" />
 
-<input type="text" placeholder="Area / City"
-class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"/>
+                <input type="text" placeholder="Area / City"
+                    class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none" />
 
-<textarea
-placeholder="Anything important for rider?"
-rows="4"
-class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none resize-none"></textarea>
+                <textarea placeholder="Anything important for rider?" rows="4"
+                    class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none resize-none"></textarea>
 
-</div>
-  <div id="cartFooter"
-class="flex flex-col md:flex-row gap-5 md:gap-0 justify-between md:items-center mt-10">
-                <h2 class="text-xl md:text-3xl font-black">
+            </div>
+            <div id="cartFooter" class="flex flex-col md:flex-row gap-5 md:gap-0 justify-between md:items-center mt-10">
+                <h2 class="text-base sm:text-xl md:text-3xl font-black break-words leading-tight">
                     Total: Rs <span id="cartTotal">0</span>
+                </h2>
+                Total: Rs <span id="cartTotal">0</span>
                 </h2>
 
                 <button onclick="checkout()"
@@ -1584,17 +1572,17 @@ class="w-8 h-8 rounded-full bg-white/10 hover:bg-cyan-500 duration-300 flex item
 
         }
 
-function checkout() {
+        function checkout() {
 
-if(cart.length === 0){
+            if (cart.length === 0) {
 
-alert("Cart is empty!");
+                alert("Cart is empty!");
 
-return;
+                return;
 
-}
+            }
 
-document.getElementById("cartItems").innerHTML = `
+            document.getElementById("cartItems").innerHTML = `
 
 <div class="glass rounded-[30px] p-5 mb-6">
 
@@ -1667,79 +1655,79 @@ Confirm Order
 
 `;
 
-}
+        }
 
-function validateOrder(){
+        function validateOrder() {
 
-const inputs = document.querySelectorAll("#cartItems input");
-const textarea = document.querySelector("#cartItems textarea");
+            const inputs = document.querySelectorAll("#cartItems input");
+            const textarea = document.querySelector("#cartItems textarea");
 
-let valid = true;
+            let valid = true;
 
-inputs.forEach(input => {
+            inputs.forEach(input => {
 
-if(input.value.trim() === ""){
+                if (input.value.trim() === "") {
 
-input.style.border = "1px solid red";
+                    input.style.border = "1px solid red";
 
-valid = false;
+                    valid = false;
 
-}else{
+                } else {
 
-input.style.border = "1px solid rgba(255,255,255,.1)";
+                    input.style.border = "1px solid rgba(255,255,255,.1)";
 
-}
+                }
 
-});
+            });
 
-if(textarea.value.trim() === ""){
+            if (textarea.value.trim() === "") {
 
-textarea.style.border = "1px solid red";
+                textarea.style.border = "1px solid red";
 
-valid = false;
+                valid = false;
 
-}else{
+            } else {
 
-textarea.style.border = "1px solid rgba(255,255,255,.1)";
+                textarea.style.border = "1px solid rgba(255,255,255,.1)";
 
-}
+            }
 
-if(!valid){
+            if (!valid) {
 
-alert("Please fill all checkout details.");
+                alert("Please fill all checkout details.");
 
-return;
+                return;
 
-}
+            }
 
-placeOrder();
+            placeOrder();
 
-}
-function placeOrder() {
+        }
+        function placeOrder() {
 
-document.getElementById("orderLoader")
-.style.display = "flex";
+            document.getElementById("orderLoader")
+                .style.display = "flex";
 
-document.querySelector("#cartModal .mt-10")
-.style.display = "none";
+            document.querySelector("#cartModal .mt-10")
+                .style.display = "none";
 
-setTimeout(() => {
+            setTimeout(() => {
 
-document.getElementById("orderLoader")
-.style.display = "none";
+                document.getElementById("orderLoader")
+                    .style.display = "none";
 
-document.getElementById("orderSuccess")
-.style.display = "flex";
+                document.getElementById("orderSuccess")
+                    .style.display = "flex";
 
-cart.length = 0;
+                cart.length = 0;
 
-updateCart();
+                updateCart();
 
-document.getElementById("cartItems").innerHTML = "";
+                document.getElementById("cartItems").innerHTML = "";
 
-}, 4000);
+            }, 4000);
 
-}
+        }
 
         function openCart() {
 
@@ -1791,178 +1779,181 @@ document.getElementById("cartItems").innerHTML = "";
             }
 
         }
-        function validateLogin(){
+        function validateLogin() {
 
-const password =
-document.getElementById("passwordInput").value;
+            const password =
+                document.getElementById("passwordInput").value;
 
-const regex =
-/^(?=.*[A-Z])(?=.*\d)(?=.*[_\W]).{8,}$/;
+            const regex =
+                /^(?=.*[A-Z])(?=.*\d)(?=.*[_\W]).{8,}$/;
 
-if(!regex.test(password)){
+            if (!regex.test(password)) {
 
-alert(
-"Password must contain minimum 8 characters, 1 uppercase letter, 1 number and 1 special character."
-);
+                alert(
+                    "Password must contain minimum 8 characters, 1 uppercase letter, 1 number and 1 special character."
+                );
 
-return;
+                return;
 
-}
+            }
 
-alert("Login Successful");
+            alert("Login Successful");
 
-closeLogin();
+            closeLogin();
 
-}
-  function toggleMobileMenu() {
+        }
+        function toggleMobileMenu() {
 
-const menu = document.getElementById("mobileMenu");
+            document
+                .getElementById("mobileMenu")
+                .classList.add("active");
 
-menu.style.left = "0";
+        }
 
-}
+        function closeMobileMenu() {
 
-function closeMobileMenu() {
+            document
+                .getElementById("mobileMenu")
+                .classList.remove("active");
 
-const menu = document.getElementById("mobileMenu");
+        }
 
-menu.style.left = "-100%";
+        function closeMobileMenu() {
 
-}
+            const menu = document.getElementById("mobileMenu");
 
-function closeMobileMenu() {
+            menu.style.left = "-100%";
 
-    document
-        .getElementById("mobileMenu")
-        .classList.remove("active");
+        }
 
-}
-function closeSuccess(){
+        function closeMobileMenu() {
 
-document.getElementById("orderSuccess")
-.style.display = "none";
+            document
+                .getElementById("mobileMenu")
+                .classList.remove("active");
 
-document.querySelector("#cartModal .mt-10")
-.style.display = "flex";
+        }
+        function closeSuccess() {
 
-closeCart();
+            document.getElementById("orderSuccess")
+                .style.display = "none";
 
-showPage('productsPage');
+            document.querySelector("#cartModal .mt-10")
+                .style.display = "flex";
 
-}
-function acceptCookies(){
+            closeCart();
 
-document.getElementById("cookiePopup")
-.style.display = "none";
+            showPage('productsPage');
 
-localStorage.setItem("cookiesAccepted", "yes");
+        }
+        function acceptCookies() {
 
-}
+            document.getElementById("cookiePopup")
+                .style.display = "none";
 
-function rejectCookies(){
+            localStorage.setItem("cookiesAccepted", "yes");
 
-document.getElementById("cookiePopup")
-.style.display = "none";
+        }
 
-localStorage.setItem("cookiesAccepted", "no");
+        function rejectCookies() {
 
-}
+            document.getElementById("cookiePopup")
+                .style.display = "none";
 
-window.onload = () => {
+            localStorage.setItem("cookiesAccepted", "no");
 
-const cookies =
-localStorage.getItem("cookiesAccepted");
+        }
 
-if(cookies){
+        window.onload = () => {
 
-document.getElementById("cookiePopup")
-.style.display = "none";
+            const cookies =
+                localStorage.getItem("cookiesAccepted");
 
-}
+            if (cookies) {
 
-};
+                document.getElementById("cookiePopup")
+                    .style.display = "none";
+
+            }
+
+        };
 
     </script>
-<div id="orderLoader"
-class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[999999]">
+    <div id="orderLoader" class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[999999]">
 
-<div class="text-center">
+        <div class="text-center">
 
-<img src="./BBBB (1).jpg"
-class="w-28 h-28 rounded-full object-cover mx-auto animate-spin border-4 border-cyan-400"/>
+            <img src="./BBBB (1).jpg"
+                class="w-28 h-28 rounded-full object-cover mx-auto animate-spin border-4 border-cyan-400" />
 
-<p class="mt-6 text-2xl font-bold">
-Processing Order...
-</p>
+            <p class="mt-6 text-2xl font-bold">
+                Processing Order...
+            </p>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<div id="orderSuccess"
-class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[999999]">
+    <div id="orderSuccess" class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[999999]">
 
-<div class="glass p-14 rounded-[40px] text-center max-w-lg mx-6">
+        <div class="glass p-14 rounded-[40px] text-center max-w-lg mx-6">
 
-<div class="text-7xl mb-6">
-✅
-</div>
+            <div class="text-7xl mb-6">
+                ✅
+            </div>
 
-<h2 class="text-5xl font-black gradient-text">
-Order Successful
-</h2>
+            <h2 class="text-5xl font-black gradient-text">
+                Order Successful
+            </h2>
 
-<p class="text-gray-400 mt-6 text-lg leading-relaxed">
-Your order has been placed successfully.
-NovaCart rider will contact you soon.
-</p>
+            <p class="text-gray-400 mt-6 text-lg leading-relaxed">
+                Your order has been placed successfully.
+                NovaCart rider will contact you soon.
+            </p>
 
-<button onclick="closeSuccess()"
-class="mt-10 bg-indigo-600 px-10 py-4 rounded-2xl glow font-bold">
-Continue Shopping
-</button>
+            <button onclick="closeSuccess()" class="mt-10 bg-indigo-600 px-10 py-4 rounded-2xl glow font-bold">
+                Continue Shopping
+            </button>
 
-</div>
+        </div>
 
-</div>
-<div id="cookiePopup"
-class="fixed bottom-5 left-1/2 -translate-x-1/2
+    </div>
+    <div id="cookiePopup" class="fixed bottom-5 left-1/2 -translate-x-1/2
 w-[92%] md:w-auto max-w-2xl
 glass rounded-[30px] p-6 z-[999999]
 border border-white/10">
 
-<div class="flex flex-col md:flex-row items-center gap-5">
+        <div class="flex flex-col md:flex-row items-center gap-5">
 
-<div class="flex-1">
+            <div class="flex-1">
 
-<h3 class="text-xl font-bold mb-2">
-🍪 Manage Cookies
-</h3>
+                <h3 class="text-xl font-bold mb-2">
+                    🍪 Manage Cookies
+                </h3>
 
-<p class="text-gray-400 text-sm leading-relaxed">
-NovaCart uses cookies to improve your experience,
-analytics and personalized content.
-</p>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    NovaCart uses cookies to improve your experience,
+                    analytics and personalized content.
+                </p>
 
-</div>
+            </div>
 
-<div class="flex gap-3 w-full md:w-auto">
+            <div class="flex gap-3 w-full md:w-auto">
 
-<button onclick="acceptCookies()"
-class="flex-1 md:flex-none bg-cyan-500 px-5 py-3 rounded-xl font-bold">
-Accept All
-</button>
+                <button onclick="acceptCookies()"
+                    class="flex-1 md:flex-none bg-cyan-500 px-5 py-3 rounded-xl font-bold">
+                    Accept All
+                </button>
 
-<button onclick="rejectCookies()"
-class="flex-1 md:flex-none bg-white/10 px-5 py-3 rounded-xl">
-Reject
-</button>
+                <button onclick="rejectCookies()" class="flex-1 md:flex-none bg-white/10 px-5 py-3 rounded-xl">
+                    Reject
+                </button>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 </body>
 
 </html>
