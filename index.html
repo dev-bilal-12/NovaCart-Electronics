@@ -611,8 +611,23 @@ class="bg-indigo-600 px-4 md:px-5 py-2 md:py-3 rounded-full glow text-sm md:text
 
         <!-- MOBILE MENU -->
 
-        <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 px-6 py-6 bg-black/70 backdrop-blur-xl">
+<div id="mobileMenu"
+class="fixed top-0 left-[-100%] w-[78%] h-screen z-[99999]
+bg-[#081120]/95 backdrop-blur-2xl
+border-r border-white/10
+px-7 py-10
+duration-500 lg:hidden">
+<div class="flex justify-between items-center mb-10">
 
+<h2 class="text-3xl font-black gradient-text">
+NovaCart
+</h2>
+
+<button onclick="closeMobileMenu()" class="text-4xl">
+×
+</button>
+
+</div>
             <div class="flex flex-col gap-5 text-lg">
 
                 <button onclick="showPage('homePage'); closeMobileMenu()"  class="mobile-link">
@@ -1153,20 +1168,32 @@ class="w-full h-full object-cover hover:scale-110 duration-500"/>
 
                 <input id="passwordInput" type="password" placeholder="Password"
                     class="w-full bg-black/20 border border-white/10 rounded-2xl px-6 py-4 outline-none" />
-
-                <div class="eye-btn" onclick="togglePassword()">
+                    
+                    <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                         <div class="eye-btn" onclick="togglePassword()">
                     👁️
                 </div>
+Password must contain:
+<br>
+• Minimum 8 characters
+<br>
+• 1 uppercase letter
+<br>
+• 1 number
+<br>
+• 1 special character
+</p>
+
+               
 
 
 
 
             </div>
-
-            <button class="w-full bg-indigo-600 py-4 rounded-2xl font-bold glow">
-                Login
-            </button>
-
+<button onclick="validateLogin()"
+class="w-full bg-indigo-600 py-4 rounded-2xl font-bold glow">
+Login
+</button>
         </div>
 
     </div>
@@ -1213,7 +1240,8 @@ rows="4"
 class="w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none resize-none"></textarea>
 
 </div>
-            <div class="flex justify-between items-center mt-10">
+  <div id="cartFooter"
+class="flex flex-col md:flex-row gap-5 md:gap-0 justify-between md:items-center mt-10">
                 <h2 class="text-xl md:text-3xl font-black">
                     Total: Rs <span id="cartTotal">0</span>
                 </h2>
@@ -1499,9 +1527,10 @@ Rs ${item.price.toLocaleString()}
 
 </div>
 
-<div class="flex items-center gap-4">
+<div class="flex items-center gap-3 bg-white/5 px-3 py-2 rounded-full">
 
-<button onclick="decreaseQty(${item.id})" class="bg-red-500/80 hover:bg-red-500 w-8 h-8 rounded-full text-sm">
+<button onclick="decreaseQty(${item.id})"
+class="w-8 h-8 rounded-full bg-white/10 hover:bg-red-500/80 duration-300 flex items-center justify-center text-lg">
 -
 </button>
 
@@ -1509,7 +1538,8 @@ Rs ${item.price.toLocaleString()}
 ${item.quantity}
 </div>
 
-<button onclick="increaseQty(${item.id})" class="bg-green-500/80 hover:bg-green-500 w-8 h-8 rounded-full text-sm">
+<button onclick="increaseQty(${item.id})"
+class="w-8 h-8 rounded-full bg-white/10 hover:bg-cyan-500 duration-300 flex items-center justify-center text-lg">
 +
 </button>
 
@@ -1554,40 +1584,160 @@ ${item.quantity}
 
         }
 
-      function checkout() {
+function checkout() {
 
-    const form =
-        document.getElementById("checkoutForm");
+if(cart.length === 0){
 
-    if(form.classList.contains("hidden")){
+alert("Cart is empty!");
 
-        form.classList.remove("hidden");
+return;
 
-        return;
+}
 
-    }
+document.getElementById("cartItems").innerHTML = `
 
-    document
-        .getElementById("orderLoader")
-        .classList.remove("hidden");
+<div class="glass rounded-[30px] p-5 mb-6">
 
-    setTimeout(() => {
+<details>
 
-        document
-            .getElementById("orderLoader")
-            .classList.add("hidden");
+<summary class="cursor-pointer text-xl font-bold flex justify-between items-center">
+Check Your Confirm Products
+<span>⬇</span>
+</summary>
 
-        document
-            .getElementById("orderSuccess")
-            .classList.remove("hidden");
+<div class="mt-5 space-y-3">
 
-        cart.length = 0;
+${cart.map(item => `
 
-        updateCart();
+<div class="flex justify-between text-gray-300 border-b border-white/10 pb-2">
 
-        closeCart();
+<div>${item.name}</div>
 
-    }, 5000);
+<div>x${item.quantity}</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+</details>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-5">
+
+<input
+type="text"
+placeholder="Full Name"
+class="bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+/>
+
+<input
+type="text"
+placeholder="Phone Number"
+class="bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+/>
+
+<input
+type="text"
+placeholder="Area"
+class="bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+/>
+
+<input
+type="text"
+placeholder="Nearest Landmark"
+class="bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+/>
+
+</div>
+
+<textarea
+placeholder="Important Message For Rider"
+rows="4"
+class="w-full mt-5 bg-black/20 border border-white/10 rounded-2xl px-5 py-4 outline-none resize-none"
+></textarea>
+
+<button
+onclick="validateOrder()"
+class="w-full mt-6 bg-indigo-600 py-4 rounded-2xl font-bold glow">
+Confirm Order
+</button>
+
+`;
+
+}
+
+function validateOrder(){
+
+const inputs = document.querySelectorAll("#cartItems input");
+const textarea = document.querySelector("#cartItems textarea");
+
+let valid = true;
+
+inputs.forEach(input => {
+
+if(input.value.trim() === ""){
+
+input.style.border = "1px solid red";
+
+valid = false;
+
+}else{
+
+input.style.border = "1px solid rgba(255,255,255,.1)";
+
+}
+
+});
+
+if(textarea.value.trim() === ""){
+
+textarea.style.border = "1px solid red";
+
+valid = false;
+
+}else{
+
+textarea.style.border = "1px solid rgba(255,255,255,.1)";
+
+}
+
+if(!valid){
+
+alert("Please fill all checkout details.");
+
+return;
+
+}
+
+placeOrder();
+
+}
+function placeOrder() {
+
+document.getElementById("orderLoader")
+.style.display = "flex";
+
+document.querySelector("#cartModal .mt-10")
+.style.display = "none";
+
+setTimeout(() => {
+
+document.getElementById("orderLoader")
+.style.display = "none";
+
+document.getElementById("orderSuccess")
+.style.display = "flex";
+
+cart.length = 0;
+
+updateCart();
+
+document.getElementById("cartItems").innerHTML = "";
+
+}, 4000);
 
 }
 
@@ -1641,11 +1791,42 @@ ${item.quantity}
             }
 
         }
-    function toggleMobileMenu() {
+        function validateLogin(){
 
-    document
-        .getElementById("mobileMenu")
-        .classList.toggle("active");
+const password =
+document.getElementById("passwordInput").value;
+
+const regex =
+/^(?=.*[A-Z])(?=.*\d)(?=.*[_\W]).{8,}$/;
+
+if(!regex.test(password)){
+
+alert(
+"Password must contain minimum 8 characters, 1 uppercase letter, 1 number and 1 special character."
+);
+
+return;
+
+}
+
+alert("Login Successful");
+
+closeLogin();
+
+}
+  function toggleMobileMenu() {
+
+const menu = document.getElementById("mobileMenu");
+
+menu.style.left = "0";
+
+}
+
+function closeMobileMenu() {
+
+const menu = document.getElementById("mobileMenu");
+
+menu.style.left = "-100%";
 
 }
 
@@ -1658,11 +1839,48 @@ function closeMobileMenu() {
 }
 function closeSuccess(){
 
-    document
-        .getElementById("orderSuccess")
-        .classList.add("hidden");
+document.getElementById("orderSuccess")
+.style.display = "none";
+
+document.querySelector("#cartModal .mt-10")
+.style.display = "flex";
+
+closeCart();
+
+showPage('productsPage');
 
 }
+function acceptCookies(){
+
+document.getElementById("cookiePopup")
+.style.display = "none";
+
+localStorage.setItem("cookiesAccepted", "yes");
+
+}
+
+function rejectCookies(){
+
+document.getElementById("cookiePopup")
+.style.display = "none";
+
+localStorage.setItem("cookiesAccepted", "no");
+
+}
+
+window.onload = () => {
+
+const cookies =
+localStorage.getItem("cookiesAccepted");
+
+if(cookies){
+
+document.getElementById("cookiePopup")
+.style.display = "none";
+
+}
+
+};
 
     </script>
 <div id="orderLoader"
@@ -1707,7 +1925,44 @@ Continue Shopping
 </div>
 
 </div>
+<div id="cookiePopup"
+class="fixed bottom-5 left-1/2 -translate-x-1/2
+w-[92%] md:w-auto max-w-2xl
+glass rounded-[30px] p-6 z-[999999]
+border border-white/10">
 
+<div class="flex flex-col md:flex-row items-center gap-5">
+
+<div class="flex-1">
+
+<h3 class="text-xl font-bold mb-2">
+🍪 Manage Cookies
+</h3>
+
+<p class="text-gray-400 text-sm leading-relaxed">
+NovaCart uses cookies to improve your experience,
+analytics and personalized content.
+</p>
+
+</div>
+
+<div class="flex gap-3 w-full md:w-auto">
+
+<button onclick="acceptCookies()"
+class="flex-1 md:flex-none bg-cyan-500 px-5 py-3 rounded-xl font-bold">
+Accept All
+</button>
+
+<button onclick="rejectCookies()"
+class="flex-1 md:flex-none bg-white/10 px-5 py-3 rounded-xl">
+Reject
+</button>
+
+</div>
+
+</div>
+
+</div>
 </body>
 
 </html>
